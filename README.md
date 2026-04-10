@@ -49,7 +49,6 @@ feirubei/
 ├── run_vuln_issue.py           # GitHub Issue
 ├── run_secbench_local.py       # SecBench 评测
 ├── mini-swe-agent/             # mini-swe-agent（可 pip install -e）
-├── secbench_details.json       # SecBench 元数据（按需放置）
 ├── outputs/                    # 运行产物（默认不提交，见 .gitignore）
 └── docs: QUICK_START.md, README_MULTI_AGENT.md, README_SECBENCH_EVAL.md, …
 ```
