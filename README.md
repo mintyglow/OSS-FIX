@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="assets/image1.png" alt="feirubei banner" width="100%"/>
+<img src="assets/image1.png" alt="feirubei banner" width="60%"/>
 
-# feirubei
+# OSS-FIX
 
 **多 Agent 自动化漏洞修复流水线** — 基于 [mini-swe-agent](https://github.com/SWE-agent/mini-swe-agent)，串联 **构建审计 → 复现 → 修复（→ 可选 Patch）**，支持本地仓库、Docker、GitHub Issue 与 **SecBench** 评测镜像。
 
@@ -163,7 +163,7 @@ python3 run_secbench_local.py \
 | 组件 | 说明 | 许可证 |
 |------|------|--------|
 | [mini-swe-agent](https://github.com/SWE-agent/mini-swe-agent) | 提供 `mini` CLI 与 Agent 运行框架 | **MIT**（见上游 [LICENSE](https://github.com/SWE-agent/mini-swe-agent/blob/main/LICENSE)） |
-| Patch-Agent | 本仓库 Stage4 所用 **Patch-Agent** 能力与相关约定 | **Apache License 2.0**（请在你所依据的上游仓库中查阅其 `LICENSE` 与 `NOTICE`；若与 [SWE-agent](https://github.com/SWE-agent/SWE-agent) 同源，一般为 Apache-2.0） |
+| [Patch-Agent](https://github.com/cla7aye15I4nd/PatchAgent) | 本仓库 Stage4 所用 **Patch-Agent** 能力与相关约定 | **Apache License 2.0**（见上游 [LICENSE](https://github.com/cla7aye15I4nd/PatchAgent/blob/main/LICENSE)） |
 
 其它：
 
