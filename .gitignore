@@ -1,0 +1,105 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv_linux/
+venv/
+env/
+.venv
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+*.sublime-project
+*.sublime-workspace
+
+# Secrets (never commit)
+keys.cfg
+**/keys.cfg
+
+# Project specific
+logs/
+results/
+snapshots/
+test_projects/
+outputs/
+.env
+mini-swe-agent/
+
+# Cache
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Temporary
+*.tmp
+*.bak
+*.swp
+*~
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Distribution
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# OS
+.DS_Store
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+secbench_details_first_80.csv
+secbench_details.json

@@ -1,0 +1,11 @@
+# 复制本文件为 keys.cfg（已加入 .gitignore，勿提交仓库），在跑脚本前执行：
+#   source keys.cfg
+#
+# 方式 A：DeepSeek 官方 API（LiteLLM 名 deepseek/...）
+# export DEEPSEEK_API_KEY="你的密钥"
+# export MSWEA_MODEL_NAME="deepseek/deepseek-reasoner"
+#
+# 方式 B：DeepSeek OpenAI 兼容接口（你当前常用）
+# export OPENAI_API_KEY="你的密钥"
+# export OPENAI_API_BASE="https://api.deepseek.com"
+# export MSWEA_MODEL_NAME="openai/deepseek-reasoner"
