@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="image1.png" alt="feirubei banner" width="100%"/>
+<img src="assets/image1.png" alt="feirubei banner" width="100%"/>
 
 # feirubei
 
@@ -20,7 +20,7 @@
 ## 流水线示意图
 
 <p align="center">
-  <img src="image2.png" alt="Build → Exploit → Fixer → Patch (optional)" width="100%"/>
+  <img src="assets/image2.png" alt="Build → Exploit → Fixer → Patch (optional)" width="100%"/>
 </p>
 
 ---
