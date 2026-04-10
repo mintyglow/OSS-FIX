@@ -147,7 +147,6 @@ python3 run_secbench_local.py \
 |------|------|
 | [QUICK_START.md](QUICK_START.md) | 最短上手与密钥 |
 | [README_MULTI_AGENT.md](README_MULTI_AGENT.md) | 多 Agent 参数与模式说明 |
-| [README_SECBENCH_EVAL.md](README_SECBENCH_EVAL.md) | SecBench 与并行示例 |
 | [MULTI_AGENT_WORKFLOW.md](MULTI_AGENT_WORKFLOW.md) | 项目结构与模块职责 |
 | [run_mini_agent.md](run_mini_agent.md) | mini 与 API 配置 |
 
