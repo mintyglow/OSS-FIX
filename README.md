@@ -11,8 +11,7 @@
 [![mini-swe-agent](https://img.shields.io/badge/mini--swe--agent-core-111827?style=flat-square)](https://github.com/SWE-agent/mini-swe-agent)
 [![Docs](https://img.shields.io/badge/docs-QUICK__START-0284c7?style=flat-square)](QUICK_START.md)
 
-[功能概览](#功能概览) · [流水线示意图](#流水线示意图) · [快速开始](#快速开始) · [文档索引](#文档索引) · [发布到 GitHub](#将仓库发布到-github)
-
+[功能概览](#功能概览) · [流水线示意图](#流水线示意图) · [快速开始](#快速开始) · [文档索引](#文档索引) 
 </div>
 
 ---
