@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/banner.svg" alt="feirubei banner" width="100%"/>
+<img src="image1.png" alt="feirubei banner" width="100%"/>
 
 # feirubei
 
@@ -20,7 +20,7 @@
 ## 流水线示意图
 
 <p align="center">
-  <img src="assets/pipeline-flow.svg" alt="Build → Exploit → Fixer → Patch (optional)" width="100%"/>
+  <img src="image2.png" alt="Build → Exploit → Fixer → Patch (optional)" width="100%"/>
 </p>
 
 ---
@@ -174,5 +174,6 @@ python3 run_secbench_local.py \
 
 ## 许可证（本项目）
 
-仓库根目录应提供 **`LICENSE`** 文件，写明你对 **本仓库自有代码**（如 `vuln_pipeline_core.py`、`config/*.yaml`、脚本等）所采用的许可证。  
-**注意：** 上述表格中的 **mini-swe-agent（MIT）** 与 **Patch-Agent（Apache-2.0）** 为第三方组件，其权利与义务不因你为本项目选择的许可证而改变；分发时请勿移除上游许可证与要求的声明文件。
+**本仓库自有代码**（如 `vuln_pipeline_core.py`、`config/*.yaml`、脚本与文档等）以 **Apache License 2.0** 发布，全文见仓库根目录 **`LICENSE`**；若存在 **`NOTICE`**，再分发时请一并保留。
+
+**注意：** 上述表格中的 **mini-swe-agent（MIT）** 与 **Patch-Agent（Apache-2.0）** 等为第三方组件，其权利与义务不因本项目采用 Apache-2.0 而改变；分发时须继续遵守各上游许可证（例如保留 MIT 的版权与许可声明、Apache-2.0 要求的 `NOTICE` 与归属说明等）。
