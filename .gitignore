@@ -54,6 +54,7 @@ results/
 snapshots/
 test_projects/
 outputs/
+combine_outputs/
 .env
 mini-swe-agent/
 

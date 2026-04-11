@@ -10,6 +10,7 @@
 ```
 feirubei/
 ├── vuln_pipeline_core.py      # 多阶段流水线核心（Docker / 本地、Issue、产物路径、pipeline_result.json）
+├── vuln_pipeline_combined.py  # 消融：单 Agent 合并 Build+Exploit，再接 Fixer/Patch（不改 run_pipeline）
 ├── run_vuln_pipeline.py       # 统一 CLI：本地路径 / GitHub 仓库 URL / Issue URL
 ├── run_vuln_local.py          # 本地仓库，宿主机执行 mini
 ├── run_vuln_docker.py         # 本地仓库，Docker 内执行 mini
@@ -20,7 +21,8 @@ feirubei/
 ├── secbench_details.json      # SecBench 实例元数据（体积大时可只带子集）
 ├── keys.cfg.example                  # 密钥模板（复制为 keys.cfg；勿提交真实 keys）
 ├── config/                    # 流水线 Agent YAML（Build / Exploit / Fixer / Patch / vulnerability_fix）
-├── outputs/                   # 运行产物（默认 gitignore 或勿提交）
+├── outputs/                   # 默认流水线运行产物（默认 gitignore）
+├── combine_outputs/           # 消融合并 Build+Exploit 流水线产物（vuln_pipeline_combined）
 ├── mini-swe-agent/            # 上游 mini-swe-agent（默认 mini.yaml 等仍在此目录）
 
 ```
@@ -49,7 +51,7 @@ feirubei/
 | `run_vuln_local.py` | 仅本地路径，`docker=False` |
 | `run_vuln_docker.py` | 本地路径 + Docker 链 |
 | `run_vuln_issue.py` | GitHub Issue + `allow_issue_delegate=True`；需 Docker 时 `--docker --base-image <image:tag>` |
-| `run_secbench_local.py` | `--instance_id` + 可选 `--json`；与 `outputs/run-{instance_id}-{ts}` 对齐 |
+| `run_secbench_local.py` | `--instance_id` + 可选 `--json`；`--ablation-combined-be` 启用合并 Build+Exploit；与 `outputs/run-{instance_id}-{ts}` 对齐 |
 
 ---
 
@@ -61,6 +63,7 @@ feirubei/
 |------|------|
 | `build_agent.yaml` | Stage1：构建与审计 |
 | `exploiter_agent.yaml` | Stage2：复现与 sanitizer 日志 |
+| `build_exploit_agent.yaml` | 消融：单 Agent 同时完成 Build+Exploit（仅 `run_pipeline_combined_build_exploit` / `run_secbench_local.py --ablation-combined-be`） |
 | `fixer_agent.yaml` | Stage3：修复与验证 |
 | `patch_agent.yaml` | Stage4：备选修复（路径约定与 `/new_project/out` 等见文件内说明） |
 | `vulnerability_fix.yaml` | 单 Agent / 其它模式备用（当前流水线未引用，可手工 `mini -c` 使用） |

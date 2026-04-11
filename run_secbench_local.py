@@ -11,6 +11,7 @@ if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
 from vuln_pipeline_core import run_pipeline
+from vuln_pipeline_combined import run_pipeline_combined_build_exploit
 
 def load_secbench_info(instance_id, json_path):
     """从 JSON 数据库中加载漏洞实例详情"""
@@ -32,6 +33,11 @@ def main():
     parser.add_argument("--json", default="secbench_details.json", help="SecBench 数据文件路径")
     parser.add_argument("--model", default="deepseek/deepseek-reasoner", help="使用的 LLM 模型")
     parser.add_argument("--timeout", type=int, default=1800, help="任务超时时间(秒)")
+    parser.add_argument(
+        "--ablation-combined-be",
+        action="store_true",
+        help="消融：单 Agent 合并编译+复现（build_exploit_agent.yaml），不跑 Fixer/Patch；结果在 combine_outputs/；默认仍为两阶段 Build+Exploit",
+    )
     args = parser.parse_args()
 
     # 1. 加载元数据
@@ -44,11 +50,12 @@ def main():
     # 规律：hwiwonlee/secb.eval.x86_64.[instance_id]:patch
     target_image = args.image if args.image else f"hwiwonlee/secb.eval.x86_64.{args.instance_id}:patch"
 
-    # 3. 与 vuln_pipeline_core 约定同一目录名：outputs/run-{instance_id}-{timestamp}
+    # 3. 输出目录：默认 outputs/；消融合并模式与 run_pipeline_combined_build_exploit 一致用 combine_outputs/
     timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
     os.environ["VULN_PIPELINE_RUN_PREFIX"] = args.instance_id
     os.environ["VULN_PIPELINE_RUN_ID"] = timestamp
-    run_out = _REPO_ROOT / "outputs" / f"run-{args.instance_id}-{timestamp}"
+    _out_base = _REPO_ROOT / ("combine_outputs" if args.ablation_combined_be else "outputs")
+    run_out = _out_base / f"run-{args.instance_id}-{timestamp}"
     run_out.mkdir(parents=True, exist_ok=True)
 
     # 4. 创建影子目录绕过本地代码检查
@@ -69,13 +76,16 @@ def main():
     )
 
     print(f"🚀 启动修复流水线: {args.instance_id}")
+    if args.ablation_combined_be:
+        print("📌 消融模式: Build+Exploit 合并为单 Agent (config/build_exploit_agent.yaml)")
     print(f"📦 使用镜像: {target_image}")
     print(f"🤖 使用模型: {args.model}")
     print(f"📁 输出目录: {run_out}")
 
     # 6. 调用核心流水线（环境变量已设，与上面 run_out 为同一路径）
     try:
-        return run_pipeline(
+        runner = run_pipeline_combined_build_exploit if args.ablation_combined_be else run_pipeline
+        return runner(
             script_path=_REPO_ROOT / "run_vuln_issue.py",
             target=str(fake_repo_path),
             docker=True,
